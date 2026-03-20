@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adi Setyo Widyanto - Portfolio</title>
+    
+    <!-- Google Fonts: Poppins (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================
+           1. CSS VARIABLES & RESET
+           ========================================== */
+        :root {
+            --bg-cream: #F6F5F1;
+            --accent-sage: #6B8F71;
+            --accent-sage-hover: #5A7A5E;
+            --text-charcoal: #333333;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --nav-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-height); /* Offset for sticky navbar */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6, .logo {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-charcoal);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        /* ==========================================
+           2. NAVIGATION (GLASSMORPHISM)
+           ========================================== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 1000;
+            /* Glassmorphism Effect */
+            background: rgba(246, 245, 241, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-sage);
+        }
+
+        /* Mobile Menu Toggle (Hidden by default) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ==========================================
+           3. LAYOUT & CONTAINERS
+           ========================================== */
+        section {
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-sage);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ==========================================
+           4. HERO SECTION
+           ========================================== */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--nav-height);
+            gap: 4rem;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-image-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .profile-img-container {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            padding: 10px;
+            background: linear-gradient(135deg, var(--accent-sage), var(--bg-cream));
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .hero-subtitle {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--accent-sage);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            font-style: italic;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--accent-sage);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(107, 143, 113, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-sage-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(107, 143, 113, 0.4);
+            color: var(--white);
+        }
+
+        /* Image Upload Button Overlay */
+        .upload-overlay {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--text-charcoal);
+            color: var(--white);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 10;
+            font-size: 1.2rem;
+        }
+
+        .upload-overlay:hover {
+            transform: scale(1.1);
+            background-color: var(--accent-sage);
+        }
+
+        /* ==========================================
+           5. ABOUT SECTION
+           ========================================== */
+        .about-content {
+            background: var(--white);
+            padding: 4rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            text-align: justify;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ==========================================
+           6. ACHIEVEMENTS SECTION (GRID)
+           ========================================== */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden; /* Ensures image respects border radius */
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: rgba(107, 143, 113, 0.2);
+        }
+
+        .card-image-container {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            background-color: #eee;
+        }
+
+        .card-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-image-container img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(107, 143, 113, 0.1);
+            color: var(--accent-sage);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            margin-top: -3.5rem; /* Overlaps with image slightly */
+            position: relative;
+            z-index: 2;
+            border: 4px solid var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            background-color: var(--accent-sage);
+            color: var(--white);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card .year {
+            display: inline-block;
+            background-color: var(--bg-cream);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-charcoal);
+            align-self: flex-start;
+        }
+
+        /* ==========================================
+           7. FOOTER & CONTACT
+           ========================================== */
+        footer {
+            background-color: var(--white);
+            padding: 4rem 5% 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-cream);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: var(--text-charcoal);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-sage);
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================
+           8. ANIMATIONS (REVEAL ON SCROLL)
+           ========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delay for grid items */
+        .grid-container .reveal:nth-child(1) { transition-delay: 0.1s; }
+        .grid-container .reveal:nth-child(2) { transition-delay: 0.2s; }
+        .grid-container .reveal:nth-child(3) { transition-delay: 0.3s; }
+        .grid-container .reveal:nth-child(4) { transition-delay: 0.4s; }
+        .grid-container .reveal:nth-child(5) { transition-delay: 0.5s; }
+        .grid-container .reveal:nth-child(6) { transition-delay: 0.6s; }
+
+        /* ==========================================
+           9. RESPONSIVE DESIGN (MOBILE-FRIENDLY)
+           ========================================== */
+        @media (max-width: 768px) {
+            #hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-img-container {
+                width: 280px;
+                height: 280px;
+                margin-top: 2rem;
+            }
+
+            .nav-links {
+                display: none; /* Hide on mobile by default */
+                position: absolute;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                background: rgba(246, 245, 241, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 2rem 0;
+                text-align: center;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .about-content {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">Adi.S</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="reveal">
+        <div class="hero-content">
+            <span class="hero-subtitle">Accounting Student @ Universitas Ciputra Surabaya</span>
+            <h1 class="hero-title">Adi Setyo Widyanto</h1>
+            <p class="hero-desc">"Smart Accounting for a Smarter Future"</p>
+            <a href="#achievements" class="btn-primary">View My Work</a>
+        </div>
+        <div class="hero-image-wrapper">
+            <div class="profile-img-container">
+                <!-- Foto Default Placeholder (Akan diganti dengan foto asli Anda via file input) -->
+                <img id="profile-preview" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=500&h=500&q=80" alt="Adi Setyo Widyanto">
+                
+                <!-- Tombol Ganti Foto -->
+                <label for="profile-upload" class="upload-overlay" title="Ganti Foto Profil">
+                    <i class="fas fa-camera"></i>
+                </label>
+                <input type="file" id="profile-upload" accept="image/*" style="display: none;" onchange="previewImage(event, 'profile-preview')">
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2 class="section-title reveal">About Me</h2>
+        <div class="about-content reveal">
+            <p class="about-text">
+                Saya adalah Mahasiswa Baru Jurusan Accounting Universitas Ciputra Surabaya. Saya memiliki pengalaman mengikuti berbagai lomba, seperti business plan, poster infografis, dan olimpiade sains nasional bidang ekonomi ditingkat Kabupaten Tuban. Saya memiliki minat besar di perlombaan terutama pada lomba bisnis dan selalu tertarik untuk mengembangkan pengalaman-pengalaman baru yang belum pernah saya rasakan sebelumnya.
+            </p>
+            <p class="about-text">
+                Saya dapat bekerja sama dalam tim dengan komunikasi yang baik dan efektif terbukti dengan saya sering menjuarai lomba bisnis bersama rekan satu tim di sekolah saya. Saya berhasil meraih <strong>20+ piagam juara tingkat nasional</strong> dalam lomba business plan, poster infografis, olimpiade, dan esai. Saya selalu terbuka untuk kegiatan yang dapat memberikan saya pengalaman dan tantangan baru.
+            </p>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section id="achievements">
+        <h2 class="section-title reveal">My Achievements</h2>
+        
+        <div class="grid-container">
+            <!-- Card 1 -->
+            <div class="card reveal">
+                <div class="card-image-container">
+                    <img id="achv-img-1" src="https://images.unsplash.com/photo-1561489413-985b06da5bee?fit=crop&w=600&h=400&q=80" alt="Dokumentasi Lomba">
+                    <label for="achv-upload-1" class="upload-overlay" style="width: 35px; height: 35px; bottom: 10px; right: 10px; font-size: 1rem;" title="Upload Dokumentasi">
+                        <i class="fas fa-camera"></i>
+                    </label>
+                    <input type="file" id="achv-upload-1" accept="image/*" style="display: none;" onchange="previewImage(event, 'achv-img-1')">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-trophy"></i></div>
+                    <h3>Juara 1 Business Plan Competition Vorment UI</h3>
+                    <p>Universitas Indonesia</p>
+                    <span class="year">2025</span>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card reveal">
+                <div class="card-image-container">
+                    <img id="achv-img-2" src="https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?fit=crop&w=600&h=400&q=80" alt="Dokumentasi Lomba">
+                    <label for="achv-upload-2" class="upload-overlay" style="width: 35px; height: 35px; bottom: 10px; right: 10px; font-size: 1rem;" title="Upload Dokumentasi">
+                        <i class="fas fa-camera"></i>
+                    </label>
+                    <input type="file" id="achv-upload-2" accept="image/*" style="display: none;" onchange="previewImage(event, 'achv-img-2')">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-medal"></i></div>
+                    <h3>Juara 2 Business Plan Competition ISME UISI</h3>
+                    <p>Universitas Internasional Semen Indonesia</p>
+                    <span class="year">2025</span>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card reveal">
+                <div class="card-image-container">
+                    <img id="achv-img-3" src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?fit=crop&w=600&h=400&q=80" alt="Dokumentasi Lomba">
+                    <label for="achv-upload-3" class="upload-overlay" style="width: 35px; height: 35px; bottom: 10px; right: 10px; font-size: 1rem;" title="Upload Dokumentasi">
+                        <i class="fas fa-camera"></i>
+                    </label>
+                    <input type="file" id="achv-upload-3" accept="image/*" style="display: none;" onchange="previewImage(event, 'achv-img-3')">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-award"></i></div>
+                    <h3>Juara 1 Business Plan Competition Preneurs</h3>
+                    <p>STIA LAN JAKARTA</p>
+                    <span class="year">2025</span>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card reveal">
+                <div class="card-image-container">
+                    <img id="achv-img-4" src="https://images.unsplash.com/photo-1557804506-669a67965ba0?fit=crop&w=600&h=400&q=80" alt="Dokumentasi Lomba">
+                    <label for="achv-upload-4" class="upload-overlay" style="width: 35px; height: 35px; bottom: 10px; right: 10px; font-size: 1rem;" title="Upload Dokumentasi">
+                        <i class="fas fa-camera"></i>
+                    </label>
+                    <input type="file" id="achv-upload-4" accept="image/*" style="display: none;" onchange="previewImage(event, 'achv-img-4')">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Juara 2 Infografis Competition UIDIGITALK</h3>
+                    <p>Universitas Indonesia</p>
+                    <span class="year">2024</span>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card reveal">
+                <div class="card-image-container">
+                    <img id="achv-img-5" src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?fit=crop&w=600&h=400&q=80" alt="Dokumentasi Lomba">
+                    <label for="achv-upload-5" class="upload-overlay" style="width: 35px; height: 35px; bottom: 10px; right: 10px; font-size: 1rem;" title="Upload Dokumentasi">
+                        <i class="fas fa-camera"></i>
+                    </label>
+                    <input type="file" id="achv-upload-5" accept="image/*" style="display: none;" onchange="previewImage(event, 'achv-img-5')">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Juara 2 Business Plan Competition Deco</h3>
+                    <p>Universitas 17 Agustus 1945 Surabaya</p>
+                    <span class="year">2025</span>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="card reveal">
+                <div class="card-image-container">
+                    <img id="achv-img-6" src="https://images.unsplash.com/photo-1552664730-d307ca884978?fit=crop&w=600&h=400&q=80" alt="Dokumentasi Lomba">
+                    <label for="achv-upload-6" class="upload-overlay" style="width: 35px; height: 35px; bottom: 10px; right: 10px; font-size: 1rem;" title="Upload Dokumentasi">
+                        <i class="fas fa-camera"></i>
+                    </label>
+                    <input type="file" id="achv-upload-6" accept="image/*" style="display: none;" onchange="previewImage(event, 'achv-img-6')">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Juara 2 Business Plan Competition IE-BIZCOMP</h3>
+                    <p>Universitas Bojonegoro</p>
+                    <span class="year">2025</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER & CONTACT SECTION -->
+    <footer id="contact">
+        <div class="footer-content reveal">
+            <h2 class="footer-title">Let's Connect</h2>
+            <p class="footer-text">Tertarik untuk berdiskusi, berkolaborasi dalam kompetisi, atau sekadar bertukar ide? Jangan ragu untuk menghubungi saya melalui platform di bawah ini.</p>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/aadisetyo_?igsh=MXg0c3Fmc2l2cW9kMQ==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/adi-setyo-widyanto-36565530b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            
+            <p class="copyright">&copy; <span id="current-year"></span> Adi Setyo Widyanto. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Change icon from bars to times
+            const icon = mobileMenu.querySelector('i');
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileMenu.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // 2. Auto Update Copyright Year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 3. Scroll Reveal Animation Logic (Intersection Observer)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // when element is 100px from viewport bottom
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load to show elements already in view
+        reveal();
+
+        // 4. Fitur Image Live Preview (Real-time Upload Simulation)
+        function previewImage(event, imageId) {
+            const input = event.target;
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const imgElement = document.getElementById(imageId);
+                    imgElement.src = e.target.result;
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
+</html>
